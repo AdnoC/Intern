@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>SImple Stock Exchange</title>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="jquery-cookie-master/jquery.cookie.js"></script>
+<script type="text/javascript">
+var selected_stock = {};
+$.getJSON("http://data.benzinga.com/stock/F", function(data) {
+	for(name in data){
+		selected_stock[name] = data[name];
+		}
+});
+function s(){
+	for(prp in selected_stock){
+		if(selected_stock.hasOwnProperty(prp)) {
+		document.write(prp);
+		document.write(": ");
+		document.write(selected_stock[prp]);
+		document.write("<br />");
+		}
+	}
+}
+loadJSON("http://data.benzinga.com/stock/F");
+	
+function loadJSON(symbol){selected_stock = {};
+$.getJSON("http://data.benzinga.com/stock/F", function(data) {
+	for(name in data){
+		selected_stock[name] = data[name];
+		}
+		alert("loaded JSON");
+});
+}
+document.write("<br />");
+document.write("Javascript Loaded");
+</script>
+</head>
+<body>
+<h1> Simple Stock Exchange </h1> <br />
+<form id="search_box" action="search.php" method="get">
+Search Symbol: <input type="text" name="Search Symbol">
+<input type="submit" value="Search">
+</form>
+<table id="selected_stock_table" border="1">
+<tr>
+<td>Name</td>
+<td>Symbol</td>
+<td>Bid</td>
+<td>Ask</td>
+</tr>
+<tr>
+<td id="ss_name">NA</td>
+<td id="ss_symbol">NA</td>
+<td id="ss_bid">NA</td>
+<td id="ss_Ask">NA</td>
+</tr>
+</table>
+<form id="quantity_purchase_form">
+Quantity: <input type="number" name="quantity_input">
+<input type="submit" value="Buy">
+<input type="submit" value="Sell">
+</form>
+<br /><br /><br />
+<p>Current Portfolio</p>
+<table id="stock_portfolio_table" border="1">
+<tr>
+<td>Name</td>
+<td>Symbol</td>
+<td>Bid</td>
+<td>Ask</td>
+</tr>
+</body>
+</html>
