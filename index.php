@@ -10,22 +10,6 @@ var portfolio = {};
 	
 function loadJSON(symbol){
 	var stock = {};
-	/*$.getJSON("http://data.benzinga.com/stock/" + symbol.toString(), function(data) {
-		for(name in data){
-		//alert(name + ": " + data[name]);
-			stock[name] = data[name];
-		}
-		document.write("1");
-		for(a in stock){
-			document.write(a + ": " + stock[a] + "<br />");
-			}
-			document.write("<br /> <br />");
-		stock = data;
-		document.write("2");
-		for(a in stock){
-			document.write(a + ": " + stock[a] + "<br />");
-		}
-	});*/
 	$.ajax({	//Makes sure its synchonous so that it WAITS UNTIL IT HAS A VALUE IN STOCK BEFORE IT RETURNS
   url: "http://data.benzinga.com/stock/" + symbol.toString(), 
   dataType: 'json',  
